@@ -1,65 +1,65 @@
 {
-  "name": "quitcontrol-vscode",
-  "displayName": "Quit Control for VSCode",
-  "description": "Stop mistyping keyboard shortctus and quiting VSCode unintentionally",
-  "version": "1.0.1",
-  "publisher": "artdiniz",
-  "author": {
-    "name": "Artur Diniz Adam",
-    "email": "artur.daz@gmail.com"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/artdiniz/quitControlVSCode/blob/master/README.md",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/artdiniz/quitControlVSCode"
-  },
-  "icon": "images/icon.png",
-  "engines": {
-    "vscode": "^1.5.0"
-  },
-  "categories": [
-    "Keymaps",
-    "Other"
-  ],
-  "activationEvents": [
-    "*"
-  ],
-  "main": "./extension",
-  "contributes": {
-    "keybindings": [
-      {
-        "command": "quitPlugin.keybindings.quit",
-        "title": "Quit VSCode",
-        "key": "ctrl+Q",
-        "mac": "cmd+Q"
-      },
-      {
-        "command": "quitPlugin.keybindings.closeWindow",
-        "title": "Close Window",
-        "key": "ctrl+shift+W",
-        "win": "alt+f4",
-        "mac": "cmd+shift+W"
-      },
-      {
-        "command": "quitPlugin.keybindings.closeEditor",
-        "title": "Close Editor",
-        "key": "ctrl+W",
-        "mac": "cmd+W"
-      }
-    ]
-  },
-  "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "typescript": "^2.0.3",
-    "vscode": "^1.0.0",
-    "mocha": "^2.3.3",
-    "eslint": "^3.6.0",
-    "@types/node": "^6.0.40",
-    "@types/mocha": "^2.2.32"
-  },
-  "dependencies": {}
+    "name": "quitcontrol-vscode",
+    "displayName": "Quit Control for VSCode",
+    "description": "Stop mistyping keyboard shortctus and quiting VSCode unintentionally",
+    "version": "1.0.2",
+    "publisher": "artdiniz",
+    "author": {
+        "name": "Artur Diniz Adam",
+        "email": "artur.daz@gmail.com"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/artdiniz/quitControlVSCode/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/artdiniz/quitControlVSCode"
+    },
+    "icon": "images/icon.png",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Keymaps",
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "keybindings": [
+            {
+                "command": "quitPlugin.keybindings.quit",
+                "title": "Quit VSCode",
+                "key": "ctrl+Q",
+                "mac": "cmd+Q"
+            },
+            {
+                "command": "quitPlugin.keybindings.closeWindow",
+                "title": "Close Window",
+                "key": "ctrl+shift+W",
+                "win": "alt+f4",
+                "mac": "cmd+shift+W"
+            },
+            {
+                "command": "quitPlugin.keybindings.closeEditor",
+                "title": "Close Editor",
+                "key": "ctrl+W",
+                "mac": "cmd+W"
+            }
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "eslint": "^3.6.0",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    },
+    "dependencies": {}
 }
