@@ -1,9 +1,20 @@
 {
     "name": "quit",
     "displayName": "Quit",
-    "description": "Stop misstyping keyboard shortctus and quiting VSCode unintentionally",
+    "description": "Stop mistyping keyboard shortctus and quiting VSCode unintentionally",
     "version": "1.0.0",
     "publisher": "artdiniz",
+    "author": {
+        "name": "Artur Diniz Adam",
+        "email": "artur.daz@gmail.com"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/artdiniz/quitControlVSCode/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/artdiniz/quitControlVSCode"
+    },
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.5.0"
     },
