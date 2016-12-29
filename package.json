@@ -19,6 +19,7 @@
         "vscode": "^1.5.0"
     },
     "categories": [
+        "Keymaps",
         "Other"
     ],
     "activationEvents": [
