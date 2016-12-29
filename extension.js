@@ -6,33 +6,36 @@ const QuitMenuOptions = require ('./QuitMenuOptions')
 
 function activate(context) {
 
-    var disposableQuitKB = vscode.commands.registerCommand('quitPlugin.keybindings.quit', function () {
+    var quitCommand = vscode.commands.registerCommand('quitPlugin.keybindings.quit', function () {
         QuitMenu.show(QuitMenuOptions.Quit)
     })
 
-    var disposableCloseWindowKB = vscode.commands.registerCommand('quitPlugin.keybindings.closeWindow', function () {
+    var closeWindowOnGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeWindow', handleCloseWindow)
+
+    var closeGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeEditor', handleCloseEditor)
+
+    function handleCloseWindow(textEditor){
         if(vscode.window.visibleTextEditors.length == 0){
             QuitMenu.show(QuitMenuOptions.CloseWindow)
         }else {
             vscode.commands.executeCommand('workbench.action.closeAllEditors')
         }
-    })
+    }
 
-    var disposableCloseEditorKB = vscode.commands.registerCommand('quitPlugin.keybindings.closeEditor', function () {
+    function handleCloseEditor(textEditor) {
         if(vscode.window.visibleTextEditors.length == 0){
             QuitMenu.show(QuitMenuOptions.CloseWindow)
         } else {
             vscode.commands.executeCommand('workbench.action.closeActiveEditor')
         }
-    })
+    }
 
-    context.subscriptions.push(disposableCloseWindowKB);
-    context.subscriptions.push(disposableCloseEditorKB);
-    context.subscriptions.push(disposableQuitKB);
+    context.subscriptions.push(closeWindowOnGenericEditorCommand)
+    context.subscriptions.push(closeGenericEditorCommand)
+    context.subscriptions.push(quitCommand)
 }
 exports.activate = activate
 
-// this method is called when your extension is deactivated
 function deactivate() {
 }
 exports.deactivate = deactivate
