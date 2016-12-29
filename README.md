@@ -22,3 +22,7 @@ If you hit `⌘Q` at any moment we will prompt you first
 ## License
 
 [MIT](https://raw.githubusercontent.com/artdiniz/quitControlVSCode/master/LICENSE)
+
+## Credits
+
+This [extension's icon](https://github.com/artdiniz/quitControlVSCode/blob/master/images/icon.png) was created by Hrag Chanchanian from the Noun Project and its colors where changed by me for use in this extension.
