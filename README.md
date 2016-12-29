@@ -1,6 +1,5 @@
 # Quit Control
 
-
 Do you hate the fact that `⌘W` or `CTRL+W` closes VSCode if there are no files open ? This extension is for you !
 
 Do you hate mistyping `⌘Q` and shutdowns VSCode with all your unsaved and beloved work ? This extension is for you !

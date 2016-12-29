@@ -1,6 +1,6 @@
 {
-    "name": "quit",
-    "displayName": "Quit",
+    "name": "quit-control-vscode",
+    "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus and quiting VSCode unintentionally",
     "version": "1.0.0",
     "publisher": "artdiniz",
