@@ -2,7 +2,7 @@
     "name": "quitcontrol-vscode",
     "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus and quiting VSCode unintentionally",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "artdiniz",
     "author": {
         "name": "Artur Diniz Adam",
@@ -27,25 +27,27 @@
     ],
     "main": "./extension",
     "contributes": {
-        "keybindings": [{
-            "command": "quitPlugin.keybindings.quit",
-            "title": "Quit VSCode",
-            "key": "ctrl+Q",
-            "mac": "cmd+Q"
-        },
-        {
-            "command": "quitPlugin.keybindings.closeWindow",
-            "title": "Close Window",
-            "key": "ctrl+shift+W",
-            "win": "alt+f4",
-            "mac": "cmd+shift+W"
-        },
-        {
-            "command": "quitPlugin.keybindings.closeEditor",
-            "title": "Close Editor",
-            "key": "ctrl+W",
-            "mac": "cmd+W"
-        }]
+        "keybindings": [
+            {
+                "command": "quitPlugin.keybindings.quit",
+                "title": "Quit VSCode",
+                "key": "ctrl+Q",
+                "mac": "cmd+Q"
+            },
+            {
+                "command": "quitPlugin.keybindings.closeWindow",
+                "title": "Close Window",
+                "key": "ctrl+shift+W",
+                "win": "alt+f4",
+                "mac": "cmd+shift+W"
+            },
+            {
+                "command": "quitPlugin.keybindings.closeEditor",
+                "title": "Close Editor",
+                "key": "ctrl+W",
+                "mac": "cmd+W"
+            }
+        ]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
