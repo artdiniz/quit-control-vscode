@@ -38,7 +38,6 @@
                 "command": "quitPlugin.keybindings.closeWindow",
                 "title": "Close Window",
                 "key": "ctrl+shift+W",
-                "win": "alt+f4",
                 "mac": "cmd+shift+W"
             },
             {
