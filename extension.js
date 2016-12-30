@@ -6,10 +6,6 @@ const QuitMenuOptions = require ('./QuitMenuOptions')
 
 function activate(context) {
 
-    vscode.commands.getCommands().then(commands => {
-        console.log(JSON.stringify(commands, null ,2))
-    })
-
     var quitCommand = vscode.commands.registerCommand('quitPlugin.keybindings.quit', function () {
         QuitMenu.show(QuitMenuOptions.Quit)
     })
