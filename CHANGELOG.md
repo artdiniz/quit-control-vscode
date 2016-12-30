@@ -2,7 +2,7 @@
 All notable changes to the "quit" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased]
+## 2.0.0 - 2016-12-30
 ### Fixed
 - Fixed bug where non-text files couldn't be closed with `⌘W` or `CTRL+W`.
 - Now this extension knows how to make proper changelogs =).
