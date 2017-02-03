@@ -6,13 +6,15 @@ const QuitMenuOptions = require ('./QuitMenuOptions')
 
 function activate(context) {
 
-    var quitCommand = vscode.commands.registerCommand('quitPlugin.keybindings.quit', function () {
+
+
+    const quitCommand = vscode.commands.registerCommand('quitPlugin.keybindings.quit', handleQuit)
+    const closeWindowOnGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeWindow', handleCloseWindow)
+    const closeGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeEditor', handleCloseEditor)
+
+	function handleQuit() {
         QuitMenu.show(QuitMenuOptions.Quit)
-    })
-
-    var closeWindowOnGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeWindow', handleCloseWindow)
-
-    var closeGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeEditor', handleCloseEditor)
+    }
 
     function handleCloseWindow(textEditor){
         vscode.commands.executeCommand('workbench.action.closeAllEditors')
@@ -20,8 +22,8 @@ function activate(context) {
     }
 
     function handleCloseEditor(textEditor) {
-        vscode.commands.executeCommand('workbench.action.closeActiveEditor')
-        if(vscode.window.visibleTextEditors.length == 0){
+		vscode.commands.executeCommand('workbench.action.closeActiveEditor')
+        if(vscode.workspace.textDocuments.length == 0){
             QuitMenu.show(QuitMenuOptions.CloseWindow)
         }
     }
