@@ -5,9 +5,6 @@ const QuitMenu = require('./QuitMenu')
 const QuitMenuOptions = require ('./QuitMenuOptions')
 
 function activate(context) {
-
-
-
     const quitCommand = vscode.commands.registerCommand('quitPlugin.keybindings.quit', handleQuit)
     const closeWindowOnGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeWindow', handleCloseWindow)
     const closeGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeEditor', handleCloseEditor)

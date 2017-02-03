@@ -2,6 +2,11 @@
 All notable changes to the "quit" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 2.0.2 - 2017-02-03
+### Fixed
+- Closing welcome screen doesn't make quit prompt to appear anymore.
+- Partially fixed bug where closing non-text tabs would always cause the quit prompt to appear.
+
 ## 2.0.1 - 2016-12-30
 ### Fixed
 - Changelog format error
