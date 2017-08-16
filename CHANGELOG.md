@@ -2,7 +2,7 @@
 All notable changes to the "quit" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased]
+## 2.0.3 - 2017-08-16
 ### Fixed
 - Sometimes slow response time after pressing keystrokes
 - Fixed issue where the Close Window prompt didn't show up reliably.
