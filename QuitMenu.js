@@ -1,34 +1,33 @@
 const vscode = require('vscode')
-const options = require ('./QuitMenuOptions')
+const QuitMenuOptions = require ('./QuitMenuOptions')
 
-const QuitMenu = {}
-
-QuitMenu.show = focusedOption => vscode.window.showQuickPick(sortedOptions(focusedOption)).then(option => {
-    if(option){
-        return vscode.commands.executeCommand(option.command)
-    }
+const asFocusedOption = option => Object.assign({}, option, {
+    description: "prevented"
+    ,detail: "Press Enter to confirm"
 })
 
-function sortedOptions(option){
-    return Object
-        .keys(options)
-        .map(key => Object.assign({}, options[key]))
-        .sort((optionA, optionB) => {
-            if(optionA.label == option.label){
-                optionA.description = "prevented"
-                optionA.detail = "Select this item to confirm"
-                return -1
-            } else if(optionB.label == option.label){
-                optionB.description = "prevented"
-                optionB.detail = "Select this item to confirm"
-                return 1
-            }else if(optionB.label == options.Cancel.label) {
-                return -1
-            }else {
-                return 1
+const quitFocusedOptions = [
+    asFocusedOption(QuitMenuOptions.Quit)
+    ,QuitMenuOptions.CloseWindow
+    ,QuitMenuOptions.Cancel
+]
+
+const closedWindowFocusedOptions = [
+    asFocusedOption(QuitMenuOptions.CloseWindow)
+    ,QuitMenuOptions.Quit
+    ,QuitMenuOptions.Cancel
+]
+
+const show = options => (
+    vscode.window.showQuickPick(options)
+        .then(option => {    
+            if(option){
+                return vscode.commands.executeCommand(option.command)
             }
         })
+)
+
+module.exports = {
+    showFocusingQuit: () => show(quitFocusedOptions)
+    ,showFocusingCloseWindow: () => show(closedWindowFocusedOptions)
 }
-
-
-module.exports = QuitMenu

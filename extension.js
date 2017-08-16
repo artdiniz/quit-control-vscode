@@ -2,7 +2,6 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode')
 const QuitMenu = require('./QuitMenu')
-const QuitMenuOptions = require ('./QuitMenuOptions')
 
 function activate(context) {
     const quitCommand = vscode.commands.registerCommand('quitPlugin.keybindings.quit', handleQuit)
@@ -10,18 +9,18 @@ function activate(context) {
     const closeGenericEditorCommand = vscode.commands.registerCommand('quitPlugin.keybindings.closeEditor', handleCloseEditor)
 
 	function handleQuit() {
-        QuitMenu.show(QuitMenuOptions.Quit)
+        QuitMenu.showFocusingQuit()
     }
 
     function handleCloseWindow(textEditor){
         vscode.commands.executeCommand('workbench.action.closeAllEditors')
-        QuitMenu.show(QuitMenuOptions.CloseWindow)
+        QuitMenu.showFocusingCloseWindow()
     }
 
     function handleCloseEditor(textEditor) {
 		vscode.commands.executeCommand('workbench.action.closeActiveEditor')
         if(vscode.workspace.textDocuments.length == 0){
-            QuitMenu.show(QuitMenuOptions.CloseWindow)
+            QuitMenu.showFocusingCloseWindow()
         }
     }
 
@@ -31,6 +30,5 @@ function activate(context) {
 }
 exports.activate = activate
 
-function deactivate() {
-}
+function deactivate() {}
 exports.deactivate = deactivate

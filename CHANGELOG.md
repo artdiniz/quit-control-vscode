@@ -2,6 +2,10 @@
 All notable changes to the "quit" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [Unreleased]
+### Fixed
+- Sometimes slow response time after pressing keystrokes
+
 ## 2.0.2 - 2017-02-03
 ### Fixed
 - Closing welcome screen doesn't make quit prompt to appear anymore.
