@@ -17,11 +17,30 @@ function activate(context) {
         QuitMenu.showFocusingCloseWindow()
     }
 
-    function handleCloseEditor(textEditor) {
-		vscode.commands.executeCommand('workbench.action.closeActiveEditor')
-        if(vscode.workspace.textDocuments.length == 0){
-            QuitMenu.showFocusingCloseWindow()
+    let currentOpenedTextEditors = (function createOpenedTextEditorsObj(length = vscode.workspace.textDocuments.length){
+        return {
+            length
+            ,incrementCount: () => createOpenedTextEditorsObj(length + 1)
+            ,decrementCount: () => createOpenedTextEditorsObj(length - 1)
         }
+    })()
+
+    vscode.workspace.onDidOpenTextDocument(() => {
+        currentOpenedTextEditors = currentOpenedTextEditors.incrementCount()
+    })
+
+    vscode.workspace.onDidCloseTextDocument(() => {
+        currentOpenedTextEditors = currentOpenedTextEditors.decrementCount()
+    })
+
+    function handleCloseEditor(textEditor) {
+        const previousOpenedTextEditorsCount = currentOpenedTextEditors.length
+        vscode.commands.executeCommand('workbench.action.closeActiveEditor')
+        .then(() => {
+            if(previousOpenedTextEditorsCount === currentOpenedTextEditors.length){
+                QuitMenu.showFocusingCloseWindow()
+            }
+        })
     }
 
     context.subscriptions.push(closeWindowOnGenericEditorCommand)

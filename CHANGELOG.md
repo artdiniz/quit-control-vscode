@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 ### Fixed
 - Sometimes slow response time after pressing keystrokes
+- Fixed issue where the Close Window prompt didn't show up reliably.
 
 ## 2.0.2 - 2017-02-03
 ### Fixed
