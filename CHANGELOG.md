@@ -1,5 +1,5 @@
 # Change Log
-All notable changes to the "quit" extension will be documented in this file.
+All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## 2.0.3 - 2017-08-16
