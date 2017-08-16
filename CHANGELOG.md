@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 - Sometimes slow response time after pressing keystrokes
 - Fixed issue where the Close Window prompt didn't show up reliably.
+### Changed
+- Text description now clearly says to press Enter to confirm
 
 ## 2.0.2 - 2017-02-03
 ### Fixed
