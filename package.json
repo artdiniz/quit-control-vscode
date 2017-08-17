@@ -12,7 +12,7 @@
     "homepage": "https://github.com/artdiniz/quitControlVSCode/blob/master/README.md",
     "repository": {
         "type": "git",
-        "url": "https://github.com/artdiniz/quitControlVSCode"
+        "url": "https://github.com/artdiniz/quit-control-vscode"
     },
     "icon": "images/icon.png",
     "engines": {
