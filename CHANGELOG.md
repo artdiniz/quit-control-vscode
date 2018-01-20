@@ -2,6 +2,10 @@
 All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 2.0.4 - 2018-01-19
+### Fixed
+- Close Window prompt always showing up when closing editor with `⌘W`.
+
 ## 2.0.3 - 2017-08-16
 ### Fixed
 - Sometimes slow response time after pressing keystrokes
