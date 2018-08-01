@@ -4,7 +4,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## 3.0.0 - 2018-08-01
 ### Changed
-– Close Window command won't close all open editors.
+– Close Window command won't close all open editors no more. From now, if you want to close all editors, use default keyboard shortcuts: `⌘K ⌘W` (on mac) or `Ctrl+K Ctrl+W` (on windows).
 
 ## 2.0.4 - 2018-01-19
 ### Fixed
