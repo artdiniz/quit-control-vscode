@@ -3,8 +3,8 @@ import * as vscode from 'vscode'
 import {QuitMenuOptions, QuitControlQuickPickItem} from './QuitMenuOptions'
 
 const asFocusedOption = (option: QuitControlQuickPickItem) => Object.assign({}, option, {
-    description: "prevented"
-    ,detail: "Press Enter to confirm"
+    description: 'prevented'
+    ,detail: 'Press Enter to confirm'
 })
 
 const quitFocusedOptions = [

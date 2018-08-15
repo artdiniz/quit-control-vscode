@@ -1,4 +1,4 @@
-import { QuickPickItem } from "vscode"
+import { QuickPickItem } from 'vscode'
 
 export abstract class QuitControlQuickPickItem implements QuickPickItem{
     abstract label: string
@@ -9,18 +9,18 @@ export abstract class QuitControlQuickPickItem implements QuickPickItem{
 
 export const QuitMenuOptions = {
     Quit: {
-        label: "Quit"
-        ,description: "⌘Q"
+        label: 'Quit'
+        ,description: '⌘Q'
         ,command: 'workbench.action.quit'
     } as QuitControlQuickPickItem
     ,CloseWindow: {
-        label: "Close Window"
-        ,description: "⇧⌘W, ⌘W"
+        label: 'Close Window'
+        ,description: '⇧⌘W, ⌘W'
         ,command: 'workbench.action.closeWindow'
     } as QuitControlQuickPickItem
     ,Cancel: {
-        label: "Cancel"
-        ,description: "ESC"
-        ,command: "search.action.focusActiveEditor"
+        label: 'Cancel'
+        ,description: 'ESC'
+        ,command: 'search.action.focusActiveEditor'
     } as QuitControlQuickPickItem
 }
