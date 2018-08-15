@@ -25,14 +25,16 @@ const closeEditor = (function(){
     const debouncedCloseEmitter = new events.EventEmitter()
 
     vscode.workspace.onDidCloseTextDocument(debounce(() => {
-        debouncedCloseEmitter.emit("close")
+        debouncedCloseEmitter.emit('close')
     }, 50))
 
     return function close(){
         return new Promise((resolve, reject) => {
             let timeout: NodeJS.Timer
-            debouncedCloseEmitter.once("close", () => {
-                timeout && clearTimeout(timeout)
+            debouncedCloseEmitter.once('close', () => {
+                if(timeout){ 
+                    clearTimeout(timeout)
+                }
                 resolve()
             })
             vscode.commands.executeCommand('workbench.action.closeActiveEditor').then(() => {

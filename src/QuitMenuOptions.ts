@@ -1,4 +1,4 @@
-import { QuickPickItem } from "vscode";
+import { QuickPickItem } from "vscode"
 
 export abstract class QuitControlQuickPickItem implements QuickPickItem{
     abstract label: string
