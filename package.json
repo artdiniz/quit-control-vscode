@@ -62,5 +62,7 @@
         "typescript": "^2.9.2",
         "vscode": "^1.1.21"
     },
-    "dependencies": {}
+    "dependencies": {
+        "lodash.debounce": "^4.0.8"
+    }
 }

@@ -1,8 +1,6 @@
 import * as vscode from 'vscode'
 import * as events from 'events'
 
-const debounce = require('../../lib/debounce')
-
 import {QuitMenu} from '../QuitMenu'
 
 let currentOpenedTextEditors = (function createOpenedTextEditorsObj(length = vscode.workspace.textDocuments.length){
@@ -22,6 +20,7 @@ vscode.workspace.onDidCloseTextDocument(() => {
 })
 
 const closeEditor = (function(){
+    const debounce = require('lodash.debounce')
 
     const debouncedCloseEmitter = new events.EventEmitter()
 
