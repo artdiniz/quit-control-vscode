@@ -1,7 +1,8 @@
-const vscode = require('vscode')
-const QuitMenuOptions = require ('./QuitMenuOptions')
+import * as vscode from 'vscode'
 
-const asFocusedOption = option => Object.assign({}, option, {
+import {QuitMenuOptions, QuitControlQuickPickItem} from './QuitMenuOptions'
+
+const asFocusedOption = (option: QuitControlQuickPickItem) => Object.assign({}, option, {
     description: "prevented"
     ,detail: "Press Enter to confirm"
 })
@@ -18,16 +19,15 @@ const closedWindowFocusedOptions = [
     ,QuitMenuOptions.Cancel
 ]
 
-const show = options => (
+const show = (options: QuitControlQuickPickItem[]) => 
     vscode.window.showQuickPick(options)
-        .then(option => {    
+        .then((option: QuitControlQuickPickItem) => {    
             if(option){
                 return vscode.commands.executeCommand(option.command)
             }
         })
-)
 
-module.exports = {
+export const QuitMenu = {
     showFocusingQuit: () => show(quitFocusedOptions)
     ,showFocusingCloseWindow: () => show(closedWindowFocusedOptions)
 }

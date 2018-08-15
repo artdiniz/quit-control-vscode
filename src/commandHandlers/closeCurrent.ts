@@ -1,9 +1,9 @@
-const vscode = require('vscode')
-const events = require('events')
+import * as vscode from 'vscode'
+import * as events from 'events'
 
 const debounce = require('../../lib/debounce')
 
-const QuitMenu = require('../QuitMenu')
+import {QuitMenu} from '../QuitMenu'
 
 let currentOpenedTextEditors = (function createOpenedTextEditorsObj(length = vscode.workspace.textDocuments.length){
     return {
@@ -31,7 +31,7 @@ const closeEditor = (function(){
 
     return function close(){
         return new Promise((resolve, reject) => {
-            let timeout
+            let timeout: NodeJS.Timer
             debouncedCloseEmitter.once("close", () => {
                 timeout && clearTimeout(timeout)
                 resolve()
@@ -46,7 +46,7 @@ const closeEditor = (function(){
 
 })()
 
-module.exports = function closeCurrentHandler(textEditor) {
+export function closeCurrentHandler() {
     const previousOpenedTextEditorsCount = currentOpenedTextEditors.length
     closeEditor().then(() => {
         if(previousOpenedTextEditorsCount === currentOpenedTextEditors.length){

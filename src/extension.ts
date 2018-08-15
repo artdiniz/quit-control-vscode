@@ -1,20 +1,23 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-const vscode = require('vscode')
+import * as vscode from 'vscode'
 
-function activate(context) {
+async function activate(context: vscode.ExtensionContext) {
+
+    const {quitCommandHandler, closeAllCommandHandler, closeCurrentCommandHandler} = await import('./commandHandlers')
+
     const quitCommand = vscode.commands.registerCommand(
         'quitPlugin.keybindings.quit'
-        , require('./commandHandlers/quit')
+        , quitCommandHandler
     )
 
     const closeAllCommand = vscode.commands.registerCommand(
         'quitPlugin.keybindings.closeWindow'
-        , require('./commandHandlers/closeAll')
+        , closeAllCommandHandler
     )
     const closeCurrentCommand = vscode.commands.registerCommand(
         'quitPlugin.keybindings.closeEditor'
-        , require('./commandHandlers/closeCurrent')
+        , closeCurrentCommandHandler
     )
 
     context.subscriptions.push(closeAllCommand)
