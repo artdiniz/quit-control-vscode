@@ -1,26 +1,31 @@
 import { QuickPickItem } from 'vscode'
 
-export abstract class QuitControlQuickPickItem implements QuickPickItem{
-    abstract label: string
-    abstract description: string
-    abstract command: string
+type QuickPitckItems = 'Quit' | 'CloseWindow' | 'Cancel'
+export interface IQuitControlQuickPickItem extends QuickPickItem {
+    label: string
+    description: string
+    command: string
 }
 
+export const asFocusedOption = (option: IQuitControlQuickPickItem) => Object.assign({}, option, {
+    description: 'prevented' as 'prevented'
+    ,detail: 'Press Enter to confirm' as 'Press Enter to confirm'
+})
 
-export const QuitMenuOptions = {
+export const QuitMenuOptions: {[key in QuickPitckItems]: IQuitControlQuickPickItem} = {
     Quit: {
         label: 'Quit'
         ,description: '⌘Q'
         ,command: 'workbench.action.quit'
-    } as QuitControlQuickPickItem
+    }
     ,CloseWindow: {
         label: 'Close Window'
         ,description: '⇧⌘W, ⌘W'
         ,command: 'workbench.action.closeWindow'
-    } as QuitControlQuickPickItem
+    }
     ,Cancel: {
         label: 'Cancel'
         ,description: 'ESC'
         ,command: 'search.action.focusActiveEditor'
-    } as QuitControlQuickPickItem
+    }
 }

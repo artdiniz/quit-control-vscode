@@ -1,11 +1,6 @@
 import * as vscode from 'vscode'
 
-import {QuitMenuOptions, QuitControlQuickPickItem} from './QuitMenuOptions'
-
-const asFocusedOption = (option: QuitControlQuickPickItem) => Object.assign({}, option, {
-    description: 'prevented'
-    ,detail: 'Press Enter to confirm'
-})
+import {QuitMenuOptions, asFocusedOption, IQuitControlQuickPickItem} from './QuitMenuOptions'
 
 const quitFocusedOptions = [
     asFocusedOption(QuitMenuOptions.Quit)
@@ -19,9 +14,9 @@ const closedWindowFocusedOptions = [
     ,QuitMenuOptions.Cancel
 ]
 
-const show = (options: QuitControlQuickPickItem[]) => 
+const show = (options: IQuitControlQuickPickItem[]) => 
     vscode.window.showQuickPick(options)
-        .then((option: QuitControlQuickPickItem) => {    
+        .then((option: IQuitControlQuickPickItem) => {    
             if(option){
                 return vscode.commands.executeCommand(option.command)
             }
