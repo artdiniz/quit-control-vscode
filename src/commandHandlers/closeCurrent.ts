@@ -50,7 +50,9 @@ const closeEditor = (function(){
 export function closeCurrentHandler() {
     const previousOpenedTextEditorsCount = currentOpenedTextEditors.length
     closeEditor().then(() => {
-        if(previousOpenedTextEditorsCount === currentOpenedTextEditors.length){
+        const maybeNoWindowLeft = previousOpenedTextEditorsCount === currentOpenedTextEditors.length
+        
+        if(maybeNoWindowLeft && vscode.window.activeTextEditor === undefined && vscode.window.visibleTextEditors.length === 0){
             QuitMenu.showFocusingCloseWindow()
         }
     })
