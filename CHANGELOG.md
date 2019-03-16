@@ -2,9 +2,14 @@
 All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+### Unreleased - 2019-03-16
+### Fixed
+- Close window pompt sometimes showing up when tere were tabs open
+- Close window prompt showing up when closing an extension page. It's a partial fix as described in this [comment on issue #3]()
+
 ## 3.0.0 - 2018-08-01
 ### Changed
-– Close Window command won't close all open editors no more. From now, if you want to close all editors, use default keyboard shortcuts: `⌘K ⌘W` (on mac) or `Ctrl+K Ctrl+W` (on windows).
+– Close Window command won't close all open editors no more. From now on, if you want to close all editors, use default keyboard shortcuts: `⌘K ⌘W` (on mac) or `Ctrl+K Ctrl+W` (on windows).
 
 ## 2.0.4 - 2018-01-19
 ### Fixed
