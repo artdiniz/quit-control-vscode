@@ -26,6 +26,8 @@ This extension will make all "quitish" keyboard shortcuts prompt you if you real
 
     ![Close Window](images/closeWindow.gif)
 
+## Release Notes 2019-03-16 (v3.1.0)
+Fixed close window prompt sometimes showing up when there were tabs open.
 
 ## Source
 
