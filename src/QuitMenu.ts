@@ -16,7 +16,7 @@ const closedWindowFocusedOptions = [
 
 const show = (options: IQuitControlQuickPickItem[]) => 
     vscode.window.showQuickPick(options)
-        .then((option: IQuitControlQuickPickItem) => {    
+        .then((option) => {    
             if(option){
                 return vscode.commands.executeCommand(option.command)
             }
