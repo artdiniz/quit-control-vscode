@@ -1,9 +1,7 @@
 import * as vscode from 'vscode'
+import {quitCommandHandler, closeAllCommandHandler, closeCurrentCommandHandler} from './commandHandlers'
 
-async function activate(context: vscode.ExtensionContext) {
-
-    const {quitCommandHandler, closeAllCommandHandler, closeCurrentCommandHandler} = await import('./commandHandlers')
-
+export const activate = function (context: vscode.ExtensionContext) {
     const quitCommand = vscode.commands.registerCommand(
         'quitPlugin.keybindings.quit'
         , quitCommandHandler
@@ -23,7 +21,4 @@ async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(quitCommand)
 }
 
-exports.activate = activate
-
-function deactivate() {}
-exports.deactivate = deactivate
+export const deactivate = function deactivate() {}
