@@ -2,7 +2,11 @@
 All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-### 3.1.0 - 2019-03-16
+## 3.1.1 - 2019-04-27
+### Fixed
+- Keybindings not working on linux distros
+  
+## 3.1.0 - 2019-03-16
 ### Fixed
 - Close window pompt sometimes showing up when tere were tabs open
 - Close window prompt showing up when closing an extension page. It's a partial fix as described in this [comment on issue #3](https://github.com/artdiniz/quit-control-vscode/issues/3#issuecomment-473577397)
