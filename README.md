@@ -1,8 +1,8 @@
 # Quit Control
 
-Do you hate the fact that `⌘W` or `CTRL+W` closes VSCode if there are no open files? This extension is for you!
-
 Do you hate mistyping `⌘Q` and shutdown VSCode with all your unsaved and beloved work? This extension is for you!
+
+Do you hate the fact that `⌘W` or `CTRL+W` closes VSCode if there are no open files? This extension is for you!
 
 This extension will make all "quitish" keyboard shortcuts prompt you if you really want to close everything if they were going to do so.
 
@@ -26,8 +26,8 @@ This extension will make all "quitish" keyboard shortcuts prompt you if you real
 
     ![Close Window](images/closeWindow.gif)
 
-## Release Notes 2019-04-27 (v3.1.1)
-Fixed keybindings not working on linux distros
+## Release Notes 2019-05-18 (v3.1.2)
+Fixed keybindings not working on linux distros. Previous update only partially fixed this.
 
 ## Source
 

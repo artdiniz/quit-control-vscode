@@ -2,9 +2,13 @@
 All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## 3.1.1 - 2019-04-27
+## 3.1.2 - 2019-05-18
 ### Fixed
 - Keybindings not working on linux distros
+
+## 3.1.1 - 2019-04-27
+### Fixed
+- Refactored typescript code that was probably causing import errors of keybinding handlers
   
 ## 3.1.0 - 2019-03-16
 ### Fixed
