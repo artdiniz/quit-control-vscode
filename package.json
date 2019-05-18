@@ -44,7 +44,8 @@
                 "command": "quitPlugin.keybindings.closeEditor",
                 "title": "Close Editor",
                 "key": "ctrl+W",
-                "mac": "cmd+W"
+                "mac": "cmd+W",
+                "when": "!editorIsOpen && !multipleEditorGroups"
             }
         ]
     },
