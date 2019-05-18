@@ -49,8 +49,9 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
+        "vscode:prepublish": "npm run clean && npm run compile",
+        "clean": "rimraf ./out",
+        "compile": "tsc --outDir ./out -p ./",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test",
@@ -59,6 +60,7 @@
     "devDependencies": {
         "@types/mocha": "^2.2.32",
         "@types/node": "^8.10.47",
+        "rimraf": "^2.6.3",
         "tslint": "^5.11.0",
         "typescript": "^2.9.2",
         "vscode": "^1.1.33"
