@@ -8,7 +8,7 @@ This extension will make all "quitish" keyboard shortcuts prompt you if you real
 
 ## Features
 
-1. If you hit `⌘Q` at any moment we will prompt you if you really want to quit:
+1. If at any moment you hit `⌘Q` (on mac) or `Ctrl+Q` (on other platforms) we will prompt you if you really want to quit:
     
     * You can press `Esc` to dismiss and continue your work:
         
@@ -26,7 +26,7 @@ This extension will make all "quitish" keyboard shortcuts prompt you if you real
 
     ![Close Window](images/closeWindow.gif)
 
-## Release Notes 2019-05-18 (v3.1.2)
+## Release Notes 2019-05-19 (v3.1.3)
 Fixed keybindings not working on linux distros. Previous update only partially fixed this.
 
 ## Source
