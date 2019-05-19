@@ -18,7 +18,7 @@ export const asFocusedOption = (option: IQuitControlQuickPickItem) => Object.ass
 export const QuitMenuOptions: {[key in QuickPitckItems]: IQuitControlQuickPickItem} = {
     Quit: {
         label: 'Quit'
-        ,description: isMacOS ? '⌘Q' : '^q'
+        ,description: isMacOS ? '⌘Q' : '^Q'
         ,command: 'workbench.action.quit'
     }
     ,CloseWindow: {
