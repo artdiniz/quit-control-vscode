@@ -2,6 +2,11 @@
 All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 3.1.4-rc1 - UNRLEASED
+### Changed
+- When there are no windows left you can use `⌘Q` to quit vscode. From [issue #24](https://github.com/artdiniz/quit-control-vscode/issues/24)
+- Namespace of commands and contexts changed from `quitPlugin` to `quitControl`
+- Follow [VSCode recommendation](https://code.visualstudio.com/api/references/activation-events#onStartupFinished) of activating extension after `onStartupFinished` and `onCommand:${commandName}`.
 ## 3.1.3 - 2019-05-19
 ### Fixed
 - Close window prompt showing up when closing an extension page. Fully fixed 2+ years old [issue #3](https://github.com/artdiniz/quit-control-vscode/issues/3)

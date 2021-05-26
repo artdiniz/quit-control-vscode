@@ -2,7 +2,7 @@
     "name": "quitcontrol-vscode",
     "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus that close/quit VSCode unintentionally",
-    "version": "3.1.3",
+    "version": "3.1.4-rc1",
     "publisher": "artdiniz",
     "author": {
         "name": "Artur Diniz Adam",
@@ -23,25 +23,29 @@
         "Other"
     ],
     "activationEvents": [
-        "*"
+        "onStartupFinished",
+        "onCommand:quitControl.keybindings.quit",
+        "onCommand:quitControl.keybindings.closeWindow",
+        "onCommand:quitControl.keybindings.closeEditor"
     ],
     "main": "./out/extension",
     "contributes": {
         "keybindings": [
             {
-                "command": "quitPlugin.keybindings.quit",
+                "command": "quitControl.keybindings.quit",
                 "title": "Quit VSCode",
                 "key": "ctrl+Q",
-                "mac": "cmd+Q"
+                "mac": "cmd+Q",
+                "when": "quitControl.isActive"
             },
             {
-                "command": "quitPlugin.keybindings.closeWindow",
+                "command": "quitControl.keybindings.closeWindow",
                 "title": "Close Window",
                 "key": "ctrl+shift+W",
                 "mac": "cmd+shift+W"
             },
             {
-                "command": "quitPlugin.keybindings.closeEditor",
+                "command": "quitControl.keybindings.closeEditor",
                 "title": "Close Editor",
                 "key": "ctrl+W",
                 "mac": "cmd+W",
