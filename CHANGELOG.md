@@ -4,7 +4,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 
 ## 3.2.1 - UNRELEASED
-#### Fixed
+### Fixed
 - Keybinding labels were wrong on non empty window
 
 ## 3.2.0 - 2021-05-26
