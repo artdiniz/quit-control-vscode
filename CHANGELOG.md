@@ -2,8 +2,7 @@
 All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-
-## 3.2.1 - UNRELEASED
+## 3.2.1 - 2021-05-26
 ### Fixed
 - Keybinding labels were wrong on non empty window
 

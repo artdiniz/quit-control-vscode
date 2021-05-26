@@ -2,7 +2,7 @@
     "name": "quitcontrol-vscode",
     "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus that close/quit VSCode unintentionally",
-    "version": "3.2.0-rc3",
+    "version": "3.2.1",
     "publisher": "artdiniz",
     "author": {
         "name": "Artur Diniz Adam",
