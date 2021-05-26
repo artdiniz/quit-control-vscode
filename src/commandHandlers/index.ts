@@ -1,3 +1,3 @@
-export {quitHandler as quitCommandHandler} from './quit'
-export {closeAllHandler as closeAllCommandHandler} from './closeAll'
-export {closeCurrentHandler as closeCurrentCommandHandler} from './closeCurrent'
+export {quitHandler as quitCommandHandler, quitEmptyWindow as quitCommandEmptyWindowHandler} from './quit'
+export {closeWindowHandler as closeWindowCommandHandler} from './closeWindow'
+export {closeEmptyWindowHandler as closeEmptyWindowCommandHandler} from './closeEmptyWindow'

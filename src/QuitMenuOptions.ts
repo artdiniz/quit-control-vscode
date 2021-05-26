@@ -3,7 +3,7 @@ import * as os from 'os'
 
 const isMacOS = (os.platform() === "darwin" )
 
-type QuickPitckItems = 'Quit' | 'CloseWindow' | 'Cancel'
+type QuickPitckItems = 'Quit' | 'CloseEmptyWindow' | 'CloseWindow' | 'Cancel'
 export interface IQuitControlQuickPickItem extends QuickPickItem {
     label: string
     description: string
@@ -21,9 +21,14 @@ export const QuitMenuOptions: {[key in QuickPitckItems]: IQuitControlQuickPickIt
         ,description: isMacOS ? '⌘Q' : '^Q'
         ,command: 'workbench.action.quit'
     }
-    ,CloseWindow: {
+    ,CloseEmptyWindow: {
         label: 'Close Window'
         ,description: isMacOS? '⇧⌘W, ⌘W' : '⇧^W, ^W '
+        ,command: 'workbench.action.closeWindow'
+    }
+    ,CloseWindow: {
+        label: 'Close Window'
+        ,description: isMacOS? '⇧⌘W' : '⇧^W'
         ,command: 'workbench.action.closeWindow'
     }
     ,Cancel: {
