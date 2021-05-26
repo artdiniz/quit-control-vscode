@@ -8,7 +8,19 @@ const quitFocusedOptions = [
     ,QuitMenuOptions.Cancel
 ]
 
-const closedWindowFocusedOptions = [
+const quitEmptyWindowFocusedOptions = [
+    asFocusedOption(QuitMenuOptions.Quit)
+    ,QuitMenuOptions.CloseEmptyWindow
+    ,QuitMenuOptions.Cancel
+]
+
+const closeEmptyWindowFocusedOptions = [
+    asFocusedOption(QuitMenuOptions.CloseEmptyWindow)
+    ,QuitMenuOptions.Quit
+    ,QuitMenuOptions.Cancel
+]
+
+const closeWindowFocusedOptions = [
     asFocusedOption(QuitMenuOptions.CloseWindow)
     ,QuitMenuOptions.Quit
     ,QuitMenuOptions.Cancel
@@ -23,6 +35,8 @@ const show = (options: IQuitControlQuickPickItem[]) =>
         })
 
 export const QuitMenu = {
-    showFocusingQuit: () => show(quitFocusedOptions)
-    ,showFocusingCloseWindow: () => show(closedWindowFocusedOptions)
+    showFocusingQuit: () => show(quitFocusedOptions),
+    showFocusingQuitEmptyWindow: () => show(quitEmptyWindowFocusedOptions)
+    ,showFocusingCloseWindow: () => show(closeWindowFocusedOptions)
+    ,showFocusingCloseEmptyWindow: () => show(closeEmptyWindowFocusedOptions)
 }

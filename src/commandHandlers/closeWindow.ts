@@ -1,5 +1,5 @@
 import {QuitMenu} from '../QuitMenu'
 
-export function closeAllHandler(){
+export function closeWindowHandler(){
     QuitMenu.showFocusingCloseWindow()
 }
