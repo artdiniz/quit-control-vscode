@@ -3,22 +3,26 @@ import {quitCommandHandler, closeAllCommandHandler, closeCurrentCommandHandler} 
 
 export const activate = function (context: vscode.ExtensionContext) {
     const quitCommand = vscode.commands.registerCommand(
-        'quitPlugin.keybindings.quit'
+        'quitControl.keybindings.quit'
         , quitCommandHandler
     )
 
     const closeAllCommand = vscode.commands.registerCommand(
-        'quitPlugin.keybindings.closeWindow'
+        'quitControl.keybindings.closeWindow'
         , closeAllCommandHandler
     )
     const closeCurrentCommand = vscode.commands.registerCommand(
-        'quitPlugin.keybindings.closeEditor'
+        'quitControl.keybindings.closeEditor'
         , closeCurrentCommandHandler
     )
 
     context.subscriptions.push(closeAllCommand)
     context.subscriptions.push(closeCurrentCommand)
     context.subscriptions.push(quitCommand)
+
+    vscode.commands.executeCommand('setContext', 'quitControl.isActive', true);
 }
 
-export const deactivate = function deactivate() {}
+export const deactivate = function deactivate() {
+    vscode.commands.executeCommand('setContext', 'quitControl.isActive', false);
+}
