@@ -2,7 +2,7 @@
     "name": "quitcontrol-vscode",
     "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus that close/quit VSCode unintentionally",
-    "version": "3.2.1",
+    "version": "3.2.2-rc1",
     "publisher": "artdiniz",
     "author": {
         "name": "Artur Diniz Adam",
@@ -65,6 +65,8 @@
         "vscode:prepublish": "npm run clean && npm run compile",
         "clean": "rimraf ./out",
         "compile": "tsc --outDir ./out -p ./",
+        "marketplace:package": "vsce package .",
+        "marketplace:publish": "vsce publish",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test",
@@ -79,6 +81,7 @@
         "vscode": "^1.1.33"
     },
     "dependencies": {
-        "lodash.debounce": "^4.0.8"
+        "lodash.debounce": "^4.0.8",
+        "vsce": "^1.88.0"
     }
 }
