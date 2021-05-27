@@ -3,7 +3,7 @@ import * as os from 'os'
 
 const isMacOS = (os.platform() === "darwin" )
 
-type QuickPitckItems = 'Quit' | 'CloseEmptyWindow' | 'CloseWindow' | 'Cancel'
+type QuickPickItems = 'Quit' | 'CloseEmptyWindow' | 'CloseWindow' | 'Cancel'
 export interface IQuitControlQuickPickItem extends QuickPickItem {
     label: string
     description: string
@@ -15,7 +15,7 @@ export const asFocusedOption = (option: IQuitControlQuickPickItem) => Object.ass
     ,detail: 'Press Enter to confirm' as 'Press Enter to confirm'
 })
 
-export const QuitMenuOptions: {[key in QuickPitckItems]: IQuitControlQuickPickItem} = {
+export const QuitMenuOptions: {[key in QuickPickItems]: IQuitControlQuickPickItem} = {
     Quit: {
         label: 'Quit'
         ,description: isMacOS ? '⌘Q' : '^Q'
