@@ -78,10 +78,8 @@
         "rimraf": "^2.6.3",
         "tslint": "^5.11.0",
         "typescript": "^2.9.2",
+        "vsce": "^1.88.0",
         "vscode": "^1.1.33"
     },
-    "dependencies": {
-        "lodash.debounce": "^4.0.8",
-        "vsce": "^1.88.0"
-    }
+    "dependencies": {}
 }
