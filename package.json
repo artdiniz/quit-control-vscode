@@ -27,7 +27,8 @@
         "onCommand:quitControl.keybindings.quit",
         "onCommand:quitControl.keybindings.quitEmptyWindow",
         "onCommand:quitControl.keybindings.closeWindow",
-        "onCommand:quitControl.keybindings.closeEmptyWindow"
+        "onCommand:quitControl.keybindings.closeEmptyWindow",
+        "onCommand:quitControl.keybindings.closeWindowAltF4"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -45,6 +46,12 @@
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
                 "when": "!editorIsOpen && !multipleEditorGroups"
+            },
+            {
+                "command": "quitControl.keybindings.closeWindowAltF4",
+                "title": "Close Window",
+                "key": "alt+f4",
+                "mac": "cmd+shift+W"
             },
             {
                 "command": "quitControl.keybindings.closeWindow",
