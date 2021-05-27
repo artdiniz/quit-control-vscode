@@ -23,12 +23,12 @@ export const QuitMenuOptions: {[key in QuickPickItems]: IQuitControlQuickPickIte
     }
     ,CloseEmptyWindow: {
         label: 'Close Window'
-        ,description: isMacOS? '⇧⌘W, ⌘W' : '⇧^W, ^W'
+        ,description: isMacOS? '⇧⌘W, ⌘W' : '⇧^W, ^W, Alt+F4'
         ,command: 'workbench.action.closeWindow'
     }
     ,CloseWindow: {
         label: 'Close Window'
-        ,description: isMacOS? '⇧⌘W' : '⇧^W'
+        ,description: isMacOS? '⇧⌘W' : '⇧^W, Alt+F4'
         ,command: 'workbench.action.closeWindow'
     }
     ,Cancel: {

@@ -18,12 +18,18 @@ export const activate = function (context: vscode.ExtensionContext) {
         'quitControl.keybindings.closeWindow'
         , closeWindowCommandHandler
     )
+    const closeAllAltF4Command = vscode.commands.registerCommand(
+        'quitControl.keybindings.closeWindowAltF4'
+        , closeWindowCommandHandler
+    )
+
     const closeCurrentCommand = vscode.commands.registerCommand(
         'quitControl.keybindings.closeEmptyWindow'
         , closeEmptyWindowCommandHandler
     )
 
     context.subscriptions.push(closeAllCommand)
+    context.subscriptions.push(closeAllAltF4Command)
     context.subscriptions.push(closeCurrentCommand)
     context.subscriptions.push(quitCommand)
     context.subscriptions.push(quitCommandEmptyWindow)
