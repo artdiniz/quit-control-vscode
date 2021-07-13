@@ -2,6 +2,15 @@
 All notable changes to the "Quit Control for VSCode" extension will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+
+## UNRELEASED - yyyy-mm-dd
+### Added
+- Linux and Windows: Preventing `Alt+F4` from closing the window;
+- Linux and Windows: Optionally enabling `Ctrl+F4` to close empty window (window without open tabs);
+- Linux and Windows: New configuration `quitControl.macLikeMode`, defaults to `true`. Enables macOS-like behaviors: 
+    - `Ctrl+Q` to quit VSCode;
+    - `Ctrl+W` and `Ctrl+F4` to close empty window (window without open tabs);
+
 ## 3.2.1 - 2021-05-26
 ### Fixed
 - Keybinding labels were wrong on non empty window

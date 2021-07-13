@@ -38,14 +38,14 @@
                 "title": "Quit VSCode",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive && config.quitControl.macOSMode || quitControl.isActive && isMac"
+                "when": "quitControl.isActive && config.quitControl.macLikeMode || quitControl.isActive && isMac"
             },
             {
                 "command": "quitControl.keybindings.quitEmptyWindow",
                 "title": "Quit VSCode",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive && !editorIsOpen && !multipleEditorGroups && config.quitControl.macOSMode || quitControl.isActive && !editorIsOpen && !multipleEditorGroups && isMac"
+                "when": "quitControl.isActive && !editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode || quitControl.isActive && !editorIsOpen && !multipleEditorGroups && isMac"
             },
             {
                 "command": "quitControl.keybindings.closeWindowAltF4",
@@ -64,22 +64,22 @@
                 "title": "Close Editor",
                 "key": "ctrl+W",
                 "mac": "cmd+W",
-                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macOSMode || !editorIsOpen && !multipleEditorGroups && isMac"
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode || !editorIsOpen && !multipleEditorGroups && isMac"
             },
             {
                 "command": "quitControl.keybindings.closeEmptyWindowCtrlF4",
                 "title": "Close Editor",
                 "key": "ctrl+f4",
-                "when": "!editorIsOpen && !multipleEditorGroups && !isMac && config.quitControl.macOSMode"
+                "when": "!editorIsOpen && !multipleEditorGroups && !isMac && config.quitControl.macLikeMode"
             }
         ],
         "configuration": {
             "title": "QuitControl",
             "properties": {
-                "quitControl.macOSMode": {
+                "quitControl.macLikeMode": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Ctrl+Q will try to quit VSCode and Ctrl+W and Ctrl+F4 will try to close empty windows (no open tabs)"
+                    "description": "Enables macOS-like behaviors: `Ctrl+Q` to quit VSCode; `Ctrl+W` and `Ctrl+F4` to close empty window (window without open tabs);"
                 }
             }
         }
