@@ -51,7 +51,6 @@
                 "command": "quitControl.keybindings.closeWindowAltF4",
                 "title": "Close Window",
                 "key": "alt+f4",
-                "mac": "cmd+shift+W",
                 "when": "!isMac"
             },
             {
@@ -71,7 +70,6 @@
                 "command": "quitControl.keybindings.closeEmptyWindowCtrlF4",
                 "title": "Close Editor",
                 "key": "ctrl+f4",
-                "mac": "cmd+W",
                 "when": "!editorIsOpen && !multipleEditorGroups && !isMac && config.quitControl.macOSMode"
             }
         ],
