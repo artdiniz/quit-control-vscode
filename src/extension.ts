@@ -1,17 +1,18 @@
 import * as vscode from 'vscode'
 import {quitCommandHandler, quitCommandEmptyWindowHandler, closeWindowCommandHandler, closeEmptyWindowCommandHandler} from './commandHandlers'
+ 
 
 export const activate = function (context: vscode.ExtensionContext) {
     vscode.commands.executeCommand('setContext', 'quitControl.isActive', true);
-    
-    const quitCommand = vscode.commands.registerCommand(
-        'quitControl.keybindings.quit'
-        , quitCommandHandler
+
+    const closeCurrentCommand = vscode.commands.registerCommand(
+        'quitControl.keybindings.closeEmptyWindow'
+        , closeEmptyWindowCommandHandler
     )
 
-    const quitCommandEmptyWindow = vscode.commands.registerCommand(
-        'quitControl.keybindings.quitEmptyWindow'
-        , quitCommandEmptyWindowHandler
+    const closeCurrentCommandCtrlf4 = vscode.commands.registerCommand(
+        'quitControl.keybindings.closeEmptyWindowCtrlF4'
+        , closeEmptyWindowCommandHandler
     )
 
     const closeAllCommand = vscode.commands.registerCommand(
@@ -23,14 +24,20 @@ export const activate = function (context: vscode.ExtensionContext) {
         , closeWindowCommandHandler
     )
 
-    const closeCurrentCommand = vscode.commands.registerCommand(
-        'quitControl.keybindings.closeEmptyWindow'
-        , closeEmptyWindowCommandHandler
+    const quitCommand = vscode.commands.registerCommand(
+        'quitControl.keybindings.quit'
+        , quitCommandHandler
     )
 
+    const quitCommandEmptyWindow = vscode.commands.registerCommand(
+        'quitControl.keybindings.quitEmptyWindow'
+        , quitCommandEmptyWindowHandler
+    )
+
+    context.subscriptions.push(closeCurrentCommand)
+    context.subscriptions.push(closeCurrentCommandCtrlf4)
     context.subscriptions.push(closeAllCommand)
     context.subscriptions.push(closeAllAltF4Command)
-    context.subscriptions.push(closeCurrentCommand)
     context.subscriptions.push(quitCommand)
     context.subscriptions.push(quitCommandEmptyWindow)
 }

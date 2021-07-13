@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 
 import {QuitMenuOptions, asFocusedOption, IQuitControlQuickPickItem} from './QuitMenuOptions'
+import { isMacOSMode, isMacOSPlatform } from './settings'
 
 const quitFocusedOptions = [
     asFocusedOption(QuitMenuOptions.Quit)
@@ -20,9 +21,14 @@ const closeEmptyWindowFocusedOptions = [
     ,QuitMenuOptions.Cancel
 ]
 
-const closeWindowFocusedOptions = [
+const closeWindowFocusedOptionsMacOSMode = [
     asFocusedOption(QuitMenuOptions.CloseWindow)
     ,QuitMenuOptions.Quit
+    ,QuitMenuOptions.Cancel
+]
+
+const closeWindowFocusedOptions = [
+    asFocusedOption(QuitMenuOptions.CloseWindow)
     ,QuitMenuOptions.Cancel
 ]
 
@@ -37,6 +43,8 @@ const show = (options: IQuitControlQuickPickItem[]) =>
 export const QuitMenu = {
     showFocusingQuit: () => show(quitFocusedOptions),
     showFocusingQuitEmptyWindow: () => show(quitEmptyWindowFocusedOptions)
-    ,showFocusingCloseWindow: () => show(closeWindowFocusedOptions)
+    ,showFocusingCloseWindow: () => (isMacOSPlatform || isMacOSMode())
+        ? show(closeWindowFocusedOptionsMacOSMode)
+        : show(closeWindowFocusedOptions)
     ,showFocusingCloseEmptyWindow: () => show(closeEmptyWindowFocusedOptions)
 }

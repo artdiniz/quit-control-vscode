@@ -2,7 +2,7 @@
     "name": "quitcontrol-vscode",
     "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus that close/quit VSCode unintentionally",
-    "version": "3.2.2-rc1",
+    "version": "3.2.1-altf4-rc1",
     "publisher": "artdiniz",
     "author": {
         "name": "Artur Diniz Adam",
@@ -38,20 +38,21 @@
                 "title": "Quit VSCode",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive"
+                "when": "quitControl.isActive && config.quitControl.macOSMode || quitControl.isActive && isMac"
             },
             {
                 "command": "quitControl.keybindings.quitEmptyWindow",
                 "title": "Quit VSCode",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "!editorIsOpen && !multipleEditorGroups"
+                "when": "quitControl.isActive && !editorIsOpen && !multipleEditorGroups && config.quitControl.macOSMode || quitControl.isActive && !editorIsOpen && !multipleEditorGroups && isMac"
             },
             {
                 "command": "quitControl.keybindings.closeWindowAltF4",
                 "title": "Close Window",
                 "key": "alt+f4",
-                "mac": "cmd+shift+W"
+                "mac": "cmd+shift+W",
+                "when": "!isMac"
             },
             {
                 "command": "quitControl.keybindings.closeWindow",
@@ -64,9 +65,26 @@
                 "title": "Close Editor",
                 "key": "ctrl+W",
                 "mac": "cmd+W",
-                "when": "!editorIsOpen && !multipleEditorGroups"
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macOSMode || !editorIsOpen && !multipleEditorGroups && isMac"
+            },
+            {
+                "command": "quitControl.keybindings.closeEmptyWindowCtrlF4",
+                "title": "Close Editor",
+                "key": "ctrl+f4",
+                "mac": "cmd+W",
+                "when": "!editorIsOpen && !multipleEditorGroups && !isMac && config.quitControl.macOSMode"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "QuitControl",
+            "properties": {
+                "quitControl.macOSMode": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Ctrl+Q will try to quit VSCode and Ctrl+W and Ctrl+F4 will try to close empty windows (no open tabs)"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run clean && npm run compile",

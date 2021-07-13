@@ -1,7 +1,5 @@
 import { QuickPickItem } from 'vscode'
-import * as os from 'os'
-
-const isMacOS = (os.platform() === "darwin" )
+import { isMacOSPlatform } from './settings'
 
 type QuickPickItems = 'Quit' | 'CloseEmptyWindow' | 'CloseWindow' | 'Cancel'
 export interface IQuitControlQuickPickItem extends QuickPickItem {
@@ -18,17 +16,19 @@ export const asFocusedOption = (option: IQuitControlQuickPickItem) => Object.ass
 export const QuitMenuOptions: {[key in QuickPickItems]: IQuitControlQuickPickItem} = {
     Quit: {
         label: 'Quit'
-        ,description: isMacOS ? '⌘Q' : '^Q'
+        ,description: isMacOSPlatform ? '⌘Q' : '^Q'
         ,command: 'workbench.action.quit'
     }
     ,CloseEmptyWindow: {
         label: 'Close Window'
-        ,description: isMacOS? '⇧⌘W, ⌘W' : '⇧^W, ^W, Alt+F4'
+        ,description: isMacOSPlatform 
+            ? '⇧⌘W, ⌘W' 
+            : '⇧^W, ^W, Alt+F4, Ctrl+F4'
         ,command: 'workbench.action.closeWindow'
     }
     ,CloseWindow: {
         label: 'Close Window'
-        ,description: isMacOS? '⇧⌘W' : '⇧^W, Alt+F4'
+        ,description: isMacOSPlatform ? '⇧⌘W' : '⇧^W, Alt+F4'
         ,command: 'workbench.action.closeWindow'
     }
     ,Cancel: {
