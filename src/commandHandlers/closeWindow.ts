@@ -4,6 +4,6 @@ export function closeWindowHandler(){
     QuitMenu.showFocusingCloseWindow()
 }
 
-export function closeEmptyWindowHandler() {
-    QuitMenu.showFocusingCloseEmptyWindow()
+export function closeEditorEmptyWindowHandler() {
+    QuitMenu.showFocusingCloseEditorEmptyWindow()
 }

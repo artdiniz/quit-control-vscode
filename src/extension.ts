@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import {quitCommandHandler, quitCommandEmptyWindowHandler, closeWindowCommandHandler, closeEmptyWindowCommandHandler} from './commandHandlers'
+import {quitHandler, quitEmptyWindowHandler, closeWindowHandler, closeEditorEmptyWindowHandler} from './commandHandlers'
  
 
 export const activate = function (context: vscode.ExtensionContext) {
@@ -7,31 +7,31 @@ export const activate = function (context: vscode.ExtensionContext) {
 
     const closeCurrentCommand = vscode.commands.registerCommand(
         'quitControl.keybindings.closeEmptyWindow'
-        , closeEmptyWindowCommandHandler
+        , closeEditorEmptyWindowHandler
     )
 
     const closeCurrentCommandCtrlf4 = vscode.commands.registerCommand(
         'quitControl.keybindings.closeEmptyWindowCtrlF4'
-        , closeEmptyWindowCommandHandler
+        , closeEditorEmptyWindowHandler
     )
 
     const closeAllCommand = vscode.commands.registerCommand(
         'quitControl.keybindings.closeWindow'
-        , closeWindowCommandHandler
+        , closeWindowHandler
     )
     const closeAllAltF4Command = vscode.commands.registerCommand(
         'quitControl.keybindings.closeWindowAltF4'
-        , closeWindowCommandHandler
+        , closeWindowHandler
     )
 
     const quitCommand = vscode.commands.registerCommand(
         'quitControl.keybindings.quit'
-        , quitCommandHandler
+        , quitHandler
     )
 
     const quitCommandEmptyWindow = vscode.commands.registerCommand(
         'quitControl.keybindings.quitEmptyWindow'
-        , quitCommandEmptyWindowHandler
+        , quitEmptyWindowHandler
     )
 
     context.subscriptions.push(closeCurrentCommand)

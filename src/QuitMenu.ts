@@ -9,26 +9,22 @@ const quitFocusedOptions = [
     ,QuitMenuOptions.Cancel
 ]
 
+// macOS or macMode only
 const quitEmptyWindowFocusedOptions = [
     asFocusedOption(QuitMenuOptions.Quit)
     ,QuitMenuOptions.CloseEmptyWindow
     ,QuitMenuOptions.Cancel
 ]
 
-const closeEmptyWindowFocusedOptions = [
-    asFocusedOption(QuitMenuOptions.CloseEmptyWindow)
-    ,QuitMenuOptions.Quit
-    ,QuitMenuOptions.Cancel
-]
-
-const closeWindowFocusedOptionsMacOSMode = [
-    asFocusedOption(QuitMenuOptions.CloseWindow)
-    ,QuitMenuOptions.Quit
-    ,QuitMenuOptions.Cancel
-]
-
 const closeWindowFocusedOptions = [
     asFocusedOption(QuitMenuOptions.CloseWindow)
+    ,QuitMenuOptions.Quit
+    ,QuitMenuOptions.Cancel
+]
+
+const closeWindowFocusedOptionsMacMode = [
+    asFocusedOption(QuitMenuOptions.CloseWindow)
+    ,QuitMenuOptions.QuitMacMode
     ,QuitMenuOptions.Cancel
 ]
 
@@ -43,8 +39,10 @@ const show = (options: IQuitControlQuickPickItem[]) =>
 export const QuitMenu = {
     showFocusingQuit: () => show(quitFocusedOptions),
     showFocusingQuitEmptyWindow: () => show(quitEmptyWindowFocusedOptions)
-    ,showFocusingCloseWindow: () => (isMacOSPlatform || isMacOSMode())
-        ? show(closeWindowFocusedOptionsMacOSMode)
+    ,showFocusingCloseWindow: () => (!isMacOSPlatform && isMacOSMode())
+        ? show(closeWindowFocusedOptionsMacMode)
         : show(closeWindowFocusedOptions)
-    ,showFocusingCloseEmptyWindow: () => show(closeEmptyWindowFocusedOptions)
+    ,showFocusingCloseEditorEmptyWindow: () => (!isMacOSPlatform && isMacOSMode())
+        ? show(closeWindowFocusedOptionsMacMode)
+        : show(closeWindowFocusedOptions)
 }

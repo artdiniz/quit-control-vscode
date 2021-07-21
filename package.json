@@ -27,31 +27,32 @@
         "onCommand:quitControl.keybindings.quit",
         "onCommand:quitControl.keybindings.quitEmptyWindow",
         "onCommand:quitControl.keybindings.closeWindow",
+        "onCommand:quitControl.keybindings.closeWindowAltF4",
         "onCommand:quitControl.keybindings.closeEmptyWindow",
-        "onCommand:quitControl.keybindings.closeWindowAltF4"
+        "onCommand:quitControl.keybindings.closeEmptyWindowCtrlF4"
     ],
     "main": "./out/extension",
     "contributes": {
         "keybindings": [
             {
                 "command": "quitControl.keybindings.quit",
-                "title": "Quit VSCode",
+                "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive && config.quitControl.macLikeMode || quitControl.isActive && isMac"
+                "when": "quitControl.isActive && config.quitControl.macLikeMode || quitControl.isActive && isMac || quitControl.isActive && isLinux"
             },
             {
                 "command": "quitControl.keybindings.quitEmptyWindow",
-                "title": "Quit VSCode",
+                "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive && !editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode || quitControl.isActive && !editorIsOpen && !multipleEditorGroups && isMac"
+                "when": "quitControl.isActive && config.quitControl.macLikeMode && !editorIsOpen && !multipleEditorGroups || quitControl.isActive && isMac && !editorIsOpen && !multipleEditorGroups"
             },
             {
                 "command": "quitControl.keybindings.closeWindowAltF4",
                 "title": "Close Window",
                 "key": "alt+f4",
-                "when": "!isMac"
+                "when": "isLinux || isWindows"
             },
             {
                 "command": "quitControl.keybindings.closeWindow",
@@ -70,7 +71,7 @@
                 "command": "quitControl.keybindings.closeEmptyWindowCtrlF4",
                 "title": "Close Editor",
                 "key": "ctrl+f4",
-                "when": "!editorIsOpen && !multipleEditorGroups && !isMac && config.quitControl.macLikeMode"
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode && isWindows"
             }
         ],
         "configuration": {
