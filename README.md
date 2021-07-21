@@ -26,8 +26,13 @@ This extension will make all "quitish" keyboard shortcuts prompt you if you real
 
     ![Close Window](images/closeWindow.gif)
 
-## Release Notes 2019-05-19 (v3.1.3)
-Fixed keybindings not working on linux distros. Previous update only partially fixed this.
+## Release Notes vUNRELEASED - yyyy-mm-dd
+### Added
+- Linux and Windows: Preventing `Alt+F4` from closing the window;
+- Linux and Windows: Optionally enabling `Ctrl+F4` to close empty window (window without open tabs);
+- Linux and Windows: New configuration `quitControl.macLikeMode`, defaults to `true`. It enables macOS-like behaviors: 
+    - `Ctrl+Q` to quit VSCode;
+    - `Ctrl+W` and `Ctrl+F4` to close empty window (window without open tabs);
 
 ## Source
 

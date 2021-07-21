@@ -2,7 +2,7 @@
     "name": "quitcontrol-vscode",
     "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus that close/quit VSCode unintentionally",
-    "version": "3.2.2-rc1",
+    "version": "3.2.1-altf4-rc1",
     "publisher": "artdiniz",
     "author": {
         "name": "Artur Diniz Adam",
@@ -27,24 +27,32 @@
         "onCommand:quitControl.keybindings.quit",
         "onCommand:quitControl.keybindings.quitEmptyWindow",
         "onCommand:quitControl.keybindings.closeWindow",
-        "onCommand:quitControl.keybindings.closeEmptyWindow"
+        "onCommand:quitControl.keybindings.closeWindowAltF4",
+        "onCommand:quitControl.keybindings.closeEmptyWindow",
+        "onCommand:quitControl.keybindings.closeEmptyWindowCtrlF4"
     ],
     "main": "./out/extension",
     "contributes": {
         "keybindings": [
             {
                 "command": "quitControl.keybindings.quit",
-                "title": "Quit VSCode",
+                "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive"
+                "when": "quitControl.isActive && config.quitControl.macLikeMode || quitControl.isActive && isMac || quitControl.isActive && isLinux"
             },
             {
                 "command": "quitControl.keybindings.quitEmptyWindow",
-                "title": "Quit VSCode",
+                "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "!editorIsOpen && !multipleEditorGroups"
+                "when": "quitControl.isActive && config.quitControl.macLikeMode && !editorIsOpen && !multipleEditorGroups || quitControl.isActive && isMac && !editorIsOpen && !multipleEditorGroups"
+            },
+            {
+                "command": "quitControl.keybindings.closeWindowAltF4",
+                "title": "Close Window",
+                "key": "alt+f4",
+                "when": "isLinux || isWindows"
             },
             {
                 "command": "quitControl.keybindings.closeWindow",
@@ -57,9 +65,25 @@
                 "title": "Close Editor",
                 "key": "ctrl+W",
                 "mac": "cmd+W",
-                "when": "!editorIsOpen && !multipleEditorGroups"
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode || !editorIsOpen && !multipleEditorGroups && isMac"
+            },
+            {
+                "command": "quitControl.keybindings.closeEmptyWindowCtrlF4",
+                "title": "Close Editor",
+                "key": "ctrl+f4",
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode && isWindows"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "QuitControl",
+            "properties": {
+                "quitControl.macLikeMode": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enables macOS-like behaviors: `Ctrl+Q` to quit VSCode; `Ctrl+W` (Linux and Windows) and `Ctrl+F4` (Windows) to close empty window (aka window without open tabs);"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run clean && npm run compile",

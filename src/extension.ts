@@ -1,30 +1,43 @@
 import * as vscode from 'vscode'
-import {quitCommandHandler, quitCommandEmptyWindowHandler, closeWindowCommandHandler, closeEmptyWindowCommandHandler} from './commandHandlers'
+import {quitHandler, quitEmptyWindowHandler, closeWindowHandler, closeEditorEmptyWindowHandler} from './commandHandlers'
+ 
 
 export const activate = function (context: vscode.ExtensionContext) {
     vscode.commands.executeCommand('setContext', 'quitControl.isActive', true);
-    
-    const quitCommand = vscode.commands.registerCommand(
-        'quitControl.keybindings.quit'
-        , quitCommandHandler
+
+    const closeCurrentCommand = vscode.commands.registerCommand(
+        'quitControl.keybindings.closeEmptyWindow'
+        , closeEditorEmptyWindowHandler
     )
 
-    const quitCommandEmptyWindow = vscode.commands.registerCommand(
-        'quitControl.keybindings.quitEmptyWindow'
-        , quitCommandEmptyWindowHandler
+    const closeCurrentCommandCtrlf4 = vscode.commands.registerCommand(
+        'quitControl.keybindings.closeEmptyWindowCtrlF4'
+        , closeEditorEmptyWindowHandler
     )
 
     const closeAllCommand = vscode.commands.registerCommand(
         'quitControl.keybindings.closeWindow'
-        , closeWindowCommandHandler
+        , closeWindowHandler
     )
-    const closeCurrentCommand = vscode.commands.registerCommand(
-        'quitControl.keybindings.closeEmptyWindow'
-        , closeEmptyWindowCommandHandler
+    const closeAllAltF4Command = vscode.commands.registerCommand(
+        'quitControl.keybindings.closeWindowAltF4'
+        , closeWindowHandler
     )
 
-    context.subscriptions.push(closeAllCommand)
+    const quitCommand = vscode.commands.registerCommand(
+        'quitControl.keybindings.quit'
+        , quitHandler
+    )
+
+    const quitCommandEmptyWindow = vscode.commands.registerCommand(
+        'quitControl.keybindings.quitEmptyWindow'
+        , quitEmptyWindowHandler
+    )
+
     context.subscriptions.push(closeCurrentCommand)
+    context.subscriptions.push(closeCurrentCommandCtrlf4)
+    context.subscriptions.push(closeAllCommand)
+    context.subscriptions.push(closeAllAltF4Command)
     context.subscriptions.push(quitCommand)
     context.subscriptions.push(quitCommandEmptyWindow)
 }
