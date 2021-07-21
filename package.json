@@ -80,7 +80,7 @@
                 "quitControl.macLikeMode": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Enables macOS-like behaviors: `Ctrl+Q` to quit VSCode; `Ctrl+W` and `Ctrl+F4` to close empty window (window without open tabs);"
+                    "description": "Enables macOS-like behaviors: `Ctrl+Q` to quit VSCode; `Ctrl+W` (Linux and Windows) and `Ctrl+F4` (Windows) to close empty window (aka window without open tabs);"
                 }
             }
         }
