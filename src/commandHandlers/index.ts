@@ -1,9 +1,8 @@
 export {
-    quitHandler as quitCommandHandler, 
-    quitEmptyWindow as quitCommandEmptyWindowHandler
+    quitHandler, 
+    quitEmptyWindowHandler
 } from './quit'
 
 export {
-    closeWindowHandler as closeWindowCommandHandler, 
-    closeEmptyWindowHandler as closeEmptyWindowCommandHandler
+    closeWindowHandler
 } from './closeWindow'

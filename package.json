@@ -2,7 +2,7 @@
     "name": "quitcontrol-vscode",
     "displayName": "Quit Control for VSCode",
     "description": "Stop mistyping keyboard shortctus that close/quit VSCode unintentionally",
-    "version": "3.2.2-rc1",
+    "version": "3.2.1-altf4-rc1",
     "publisher": "artdiniz",
     "author": {
         "name": "Artur Diniz Adam",
@@ -27,24 +27,24 @@
         "onCommand:quitControl.keybindings.quit",
         "onCommand:quitControl.keybindings.quitEmptyWindow",
         "onCommand:quitControl.keybindings.closeWindow",
-        "onCommand:quitControl.keybindings.closeEmptyWindow"
+        "onCommand:quitControl.keybindings.stopCloseEmptyWindow"
     ],
     "main": "./out/extension",
     "contributes": {
         "keybindings": [
             {
                 "command": "quitControl.keybindings.quit",
-                "title": "Quit VSCode",
+                "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive"
+                "when": "quitControl.isActive && isWindows && config.quitControl.enableQuitKeybindingOnWindows || quitControl.isActive && isMac || quitControl.isActive && isLinux"
             },
             {
                 "command": "quitControl.keybindings.quitEmptyWindow",
-                "title": "Quit VSCode",
+                "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "!editorIsOpen && !multipleEditorGroups"
+                "when": "quitControl.isActive && isWindows && config.quitControl.enableQuitKeybindingOnWindows && config.quitControl.closeTabShouldTryToCloseEmptyWindow && !editorIsOpen && !multipleEditorGroups || quitControl.isActive && isMac && config.quitControl.closeTabShouldTryToCloseEmptyWindow && !editorIsOpen && !multipleEditorGroups || quitControl.isActive && isLinux && config.quitControl.closeTabShouldTryToCloseEmptyWindow && !editorIsOpen && !multipleEditorGroups"
             },
             {
                 "command": "quitControl.keybindings.closeWindow",
@@ -53,13 +53,47 @@
                 "mac": "cmd+shift+W"
             },
             {
-                "command": "quitControl.keybindings.closeEmptyWindow",
+                "command": "quitControl.keybindings.closeWindow",
+                "title": "Close Window",
+                "key": "alt+f4",
+                "when": "isLinux || isWindows"
+            },
+            {
+                "command": "quitControl.keybindings.closeWindow",
                 "title": "Close Editor",
                 "key": "ctrl+W",
                 "mac": "cmd+W",
-                "when": "!editorIsOpen && !multipleEditorGroups"
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.closeTabShouldTryToCloseEmptyWindow"
+            },
+            {
+                "command": "quitControl.keybindings.closeWindow",
+                "title": "Close Editor",
+                "key": "ctrl+f4",
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.closeTabShouldTryToCloseEmptyWindow && isWindows"
+            },
+            {
+                "command": "quitControl.keybindings.stopCloseEmptyWindow",
+                "title": "Close Editor",
+                "key": "ctrl+W",
+                "mac": "cmd+W",
+                "when": "isMac && !editorIsOpen && !multipleEditorGroups && !config.quitControl.closeTabShouldTryToCloseEmptyWindow"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "QuitControl",
+            "properties": {
+                "quitControl.closeTabShouldTryToCloseEmptyWindow": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enables macOS-like behavior of closing an empty window with the same shortcut of closing a tab: `Cmd+W` (macOS); `Ctrl+W` (Linux and Windows); `Ctrl+F4` (Windows)."
+                },
+                "quitControl.enableQuitKeybindingOnWindows": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enables `Ctrl+Q` to quit VSCode on Windows."
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run clean && npm run compile",

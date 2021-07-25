@@ -1,9 +1,13 @@
 import { QuickPickItem } from 'vscode'
-import * as os from 'os'
+import { isMacOSPlatform, isWindowsPlatform } from './settings'
 
-const isMacOS = (os.platform() === "darwin" )
-
-type QuickPickItems = 'Quit' | 'CloseEmptyWindow' | 'CloseWindow' | 'Cancel'
+type QuickPickItems = (
+    'Quit' | 
+    'QuitWindowsMode' | 
+    'CloseEmptyWindow' |
+    'CloseWindow' | 
+    'Cancel'
+)
 export interface IQuitControlQuickPickItem extends QuickPickItem {
     label: string
     description: string
@@ -18,17 +22,32 @@ export const asFocusedOption = (option: IQuitControlQuickPickItem) => Object.ass
 export const QuitMenuOptions: {[key in QuickPickItems]: IQuitControlQuickPickItem} = {
     Quit: {
         label: 'Quit'
-        ,description: isMacOS ? '⌘Q' : '^Q'
+        ,description: isMacOSPlatform
+            ? '⌘Q'
+            : !isWindowsPlatform 
+                ? '^Q' 
+                : ''
+        ,command: 'workbench.action.quit'
+    }
+    ,QuitWindowsMode: {
+        label: 'Quit'
+        ,description: '^Q'
         ,command: 'workbench.action.quit'
     }
     ,CloseEmptyWindow: {
         label: 'Close Window'
-        ,description: isMacOS? '⇧⌘W, ⌘W' : '⇧^W, ^W'
+        ,description: isMacOSPlatform
+            ? '⇧⌘W, ⌘W'
+            : isWindowsPlatform 
+                ? '⇧^W, ^W, Alt+F4, Ctrl+F4'
+                : '⇧^W, ^W, Alt+F4'
         ,command: 'workbench.action.closeWindow'
     }
     ,CloseWindow: {
         label: 'Close Window'
-        ,description: isMacOS? '⇧⌘W' : '⇧^W'
+        ,description: isMacOSPlatform 
+            ? '⇧⌘W' 
+            : '⇧^W, Alt+F4'
         ,command: 'workbench.action.closeWindow'
     }
     ,Cancel: {

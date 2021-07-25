@@ -1,30 +1,32 @@
 import * as vscode from 'vscode'
-import {quitCommandHandler, quitCommandEmptyWindowHandler, closeWindowCommandHandler, closeEmptyWindowCommandHandler} from './commandHandlers'
+import { quitHandler, quitEmptyWindowHandler, closeWindowHandler } from './commandHandlers'
+ 
 
 export const activate = function (context: vscode.ExtensionContext) {
     vscode.commands.executeCommand('setContext', 'quitControl.isActive', true);
-    
+
+    const stopCloseEmptyWindowCommand = vscode.commands.registerCommand(
+        'quitControl.keybindings.stopCloseEmptyWindow'
+        , () => {}
+    )
+
+    const closeWindowCommand = vscode.commands.registerCommand(
+        'quitControl.keybindings.closeWindow'
+        , closeWindowHandler
+    )
+
     const quitCommand = vscode.commands.registerCommand(
         'quitControl.keybindings.quit'
-        , quitCommandHandler
+        , quitHandler
     )
 
     const quitCommandEmptyWindow = vscode.commands.registerCommand(
         'quitControl.keybindings.quitEmptyWindow'
-        , quitCommandEmptyWindowHandler
+        , quitEmptyWindowHandler
     )
 
-    const closeAllCommand = vscode.commands.registerCommand(
-        'quitControl.keybindings.closeWindow'
-        , closeWindowCommandHandler
-    )
-    const closeCurrentCommand = vscode.commands.registerCommand(
-        'quitControl.keybindings.closeEmptyWindow'
-        , closeEmptyWindowCommandHandler
-    )
-
-    context.subscriptions.push(closeAllCommand)
-    context.subscriptions.push(closeCurrentCommand)
+    context.subscriptions.push(stopCloseEmptyWindowCommand)
+    context.subscriptions.push(closeWindowCommand)
     context.subscriptions.push(quitCommand)
     context.subscriptions.push(quitCommandEmptyWindow)
 }

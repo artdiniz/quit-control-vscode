@@ -1,28 +1,29 @@
 import * as vscode from 'vscode'
 
 import {QuitMenuOptions, asFocusedOption, IQuitControlQuickPickItem} from './QuitMenuOptions'
+import { isWindowsQuitMode, isWindowsPlatform } from './settings'
 
-const quitFocusedOptions = [
+const quitOptions = [
     asFocusedOption(QuitMenuOptions.Quit)
     ,QuitMenuOptions.CloseWindow
     ,QuitMenuOptions.Cancel
 ]
 
-const quitEmptyWindowFocusedOptions = [
+const quitEmptyWindowOptions = [
     asFocusedOption(QuitMenuOptions.Quit)
     ,QuitMenuOptions.CloseEmptyWindow
     ,QuitMenuOptions.Cancel
 ]
 
-const closeEmptyWindowFocusedOptions = [
-    asFocusedOption(QuitMenuOptions.CloseEmptyWindow)
+const closeWindowOptions = [
+    asFocusedOption(QuitMenuOptions.CloseWindow)
     ,QuitMenuOptions.Quit
     ,QuitMenuOptions.Cancel
 ]
 
-const closeWindowFocusedOptions = [
+const closeWindowOptionsQuitWindowsMode = [
     asFocusedOption(QuitMenuOptions.CloseWindow)
-    ,QuitMenuOptions.Quit
+    ,QuitMenuOptions.QuitWindowsMode
     ,QuitMenuOptions.Cancel
 ]
 
@@ -35,8 +36,9 @@ const show = (options: IQuitControlQuickPickItem[]) =>
         })
 
 export const QuitMenu = {
-    showFocusingQuit: () => show(quitFocusedOptions),
-    showFocusingQuitEmptyWindow: () => show(quitEmptyWindowFocusedOptions)
-    ,showFocusingCloseWindow: () => show(closeWindowFocusedOptions)
-    ,showFocusingCloseEmptyWindow: () => show(closeEmptyWindowFocusedOptions)
+    showFocusingQuit: () => show(quitOptions),
+    showFocusingQuitEmptyWindow: () => show(quitEmptyWindowOptions)
+    ,showFocusingCloseWindow: () => (isWindowsPlatform && isWindowsQuitMode())
+        ? show(closeWindowOptionsQuitWindowsMode)
+        : show(closeWindowOptions)
 }
