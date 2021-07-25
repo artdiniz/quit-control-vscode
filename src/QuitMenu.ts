@@ -1,30 +1,29 @@
 import * as vscode from 'vscode'
 
 import {QuitMenuOptions, asFocusedOption, IQuitControlQuickPickItem} from './QuitMenuOptions'
-import { isMacOSMode, isMacOSPlatform } from './settings'
+import { isWindowsQuitMode, isWindowsPlatform } from './settings'
 
-const quitFocusedOptions = [
+const quitOptions = [
     asFocusedOption(QuitMenuOptions.Quit)
     ,QuitMenuOptions.CloseWindow
     ,QuitMenuOptions.Cancel
 ]
 
-// macOS or macMode only
-const quitEmptyWindowFocusedOptions = [
+const quitEmptyWindowOptions = [
     asFocusedOption(QuitMenuOptions.Quit)
     ,QuitMenuOptions.CloseEmptyWindow
     ,QuitMenuOptions.Cancel
 ]
 
-const closeWindowFocusedOptions = [
+const closeWindowOptions = [
     asFocusedOption(QuitMenuOptions.CloseWindow)
     ,QuitMenuOptions.Quit
     ,QuitMenuOptions.Cancel
 ]
 
-const closeWindowFocusedOptionsMacMode = [
+const closeWindowOptionsQuitWindowsMode = [
     asFocusedOption(QuitMenuOptions.CloseWindow)
-    ,QuitMenuOptions.QuitMacMode
+    ,QuitMenuOptions.QuitWindowsMode
     ,QuitMenuOptions.Cancel
 ]
 
@@ -37,12 +36,9 @@ const show = (options: IQuitControlQuickPickItem[]) =>
         })
 
 export const QuitMenu = {
-    showFocusingQuit: () => show(quitFocusedOptions),
-    showFocusingQuitEmptyWindow: () => show(quitEmptyWindowFocusedOptions)
-    ,showFocusingCloseWindow: () => (!isMacOSPlatform && isMacOSMode())
-        ? show(closeWindowFocusedOptionsMacMode)
-        : show(closeWindowFocusedOptions)
-    ,showFocusingCloseEditorEmptyWindow: () => (!isMacOSPlatform && isMacOSMode())
-        ? show(closeWindowFocusedOptionsMacMode)
-        : show(closeWindowFocusedOptions)
+    showFocusingQuit: () => show(quitOptions),
+    showFocusingQuitEmptyWindow: () => show(quitEmptyWindowOptions)
+    ,showFocusingCloseWindow: () => (isWindowsPlatform && isWindowsQuitMode())
+        ? show(closeWindowOptionsQuitWindowsMode)
+        : show(closeWindowOptions)
 }

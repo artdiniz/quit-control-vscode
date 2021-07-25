@@ -28,11 +28,11 @@ This extension will make all "quitish" keyboard shortcuts prompt you if you real
 
 ## Release Notes vUNRELEASED - yyyy-mm-dd
 ### Added
-- Linux and Windows: Preventing `Alt+F4` from closing the window;
-- Linux and Windows: Optionally enabling `Ctrl+F4` to close empty window (window without open tabs);
-- Linux and Windows: New configuration `quitControl.macLikeMode`, defaults to `true`. It enables macOS-like behaviors: 
-    - `Ctrl+Q` to quit VSCode;
-    - `Ctrl+W` and `Ctrl+F4` to close empty window (window without open tabs);
+- New configuration `quitControl.closeTabShouldTryToCloseEmptyWindow`, defaults to `true`. Toggle macOS-like behavior of closing an empty window with the same shortcut of closing a tab: `Cmd+W` (macOS); `Ctrl+W` (Linux and Windows); `Ctrl+F4` (Windows).
+#### Linux and Windows 
+- Preventing `Alt+F4` from closing the window and prompting you instead. Consistent only on Windows for now, as VScode for Linux distros doesn't always support keybindings on `Alt+F4`;
+#### Windows
+- New configuration `quitControl.enableQuitKeybindingOnWindows`, defaults to `true`. Enables `Ctrl+Q` to quit VSCode on Windows.
 
 ## Source
 

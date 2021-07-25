@@ -5,10 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## UNRELEASED - yyyy-mm-dd
 ### Added
-- Linux and Windows: Preventing `Alt+F4` from closing the window. Consistent only on Windows for now, as VScode for Linux distros doesn't always support keybindings on `Alt+F4`;
-- Linux and Windows: New configuration `quitControl.macLikeMode`, defaults to `true`. Enables macOS-like behaviors: 
-    - prompt to quit with `Ctrl+Q`;
-    - prompt to close an empty window with `Ctrl+W` (Linux and Windows) and `Ctrl+F4` (Windows);
+- New configuration `quitControl.closeTabShouldTryToCloseEmptyWindow`, defaults to `true`. Toggle macOS-like behavior of closing an empty window with the same shortcut of closing a tab: `Cmd+W` (macOS); `Ctrl+W` (Linux and Windows); `Ctrl+F4` (Windows).
+#### Linux and Windows 
+- Preventing `Alt+F4` from closing the window and prompting you instead. Consistent only on Windows for now, as VScode for Linux distros doesn't always support keybindings on `Alt+F4`;
+#### Windows
+- New configuration `quitControl.enableQuitKeybindingOnWindows`, defaults to `true`. Enables `Ctrl+Q` to quit VSCode on Windows.
 
 ## 3.2.1 - 2021-05-26
 ### Fixed

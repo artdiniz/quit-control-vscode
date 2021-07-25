@@ -1,26 +1,17 @@
 import * as vscode from 'vscode'
-import {quitHandler, quitEmptyWindowHandler, closeWindowHandler, closeEditorEmptyWindowHandler} from './commandHandlers'
+import { quitHandler, quitEmptyWindowHandler, closeWindowHandler } from './commandHandlers'
  
 
 export const activate = function (context: vscode.ExtensionContext) {
     vscode.commands.executeCommand('setContext', 'quitControl.isActive', true);
 
-    const closeCurrentCommand = vscode.commands.registerCommand(
-        'quitControl.keybindings.closeEmptyWindow'
-        , closeEditorEmptyWindowHandler
+    const stopCloseEmptyWindowCommand = vscode.commands.registerCommand(
+        'quitControl.keybindings.stopCloseEmptyWindow'
+        , () => {}
     )
 
-    const closeCurrentCommandCtrlf4 = vscode.commands.registerCommand(
-        'quitControl.keybindings.closeEmptyWindowCtrlF4'
-        , closeEditorEmptyWindowHandler
-    )
-
-    const closeAllCommand = vscode.commands.registerCommand(
+    const closeWindowCommand = vscode.commands.registerCommand(
         'quitControl.keybindings.closeWindow'
-        , closeWindowHandler
-    )
-    const closeAllAltF4Command = vscode.commands.registerCommand(
-        'quitControl.keybindings.closeWindowAltF4'
         , closeWindowHandler
     )
 
@@ -34,10 +25,8 @@ export const activate = function (context: vscode.ExtensionContext) {
         , quitEmptyWindowHandler
     )
 
-    context.subscriptions.push(closeCurrentCommand)
-    context.subscriptions.push(closeCurrentCommandCtrlf4)
-    context.subscriptions.push(closeAllCommand)
-    context.subscriptions.push(closeAllAltF4Command)
+    context.subscriptions.push(stopCloseEmptyWindowCommand)
+    context.subscriptions.push(closeWindowCommand)
     context.subscriptions.push(quitCommand)
     context.subscriptions.push(quitCommandEmptyWindow)
 }

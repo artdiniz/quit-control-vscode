@@ -4,6 +4,5 @@ export {
 } from './quit'
 
 export {
-    closeWindowHandler, 
-    closeEditorEmptyWindowHandler
+    closeWindowHandler
 } from './closeWindow'

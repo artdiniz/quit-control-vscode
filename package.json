@@ -27,9 +27,7 @@
         "onCommand:quitControl.keybindings.quit",
         "onCommand:quitControl.keybindings.quitEmptyWindow",
         "onCommand:quitControl.keybindings.closeWindow",
-        "onCommand:quitControl.keybindings.closeWindowAltF4",
-        "onCommand:quitControl.keybindings.closeEmptyWindow",
-        "onCommand:quitControl.keybindings.closeEmptyWindowCtrlF4"
+        "onCommand:quitControl.keybindings.stopCloseEmptyWindow"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -39,20 +37,14 @@
                 "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive && config.quitControl.macLikeMode || quitControl.isActive && isMac || quitControl.isActive && isLinux"
+                "when": "quitControl.isActive && isWindows && config.quitControl.enableQuitKeybindingOnWindows || quitControl.isActive && isMac || quitControl.isActive && isLinux"
             },
             {
                 "command": "quitControl.keybindings.quitEmptyWindow",
                 "title": "Quit Visual Studio Code",
                 "key": "ctrl+Q",
                 "mac": "cmd+Q",
-                "when": "quitControl.isActive && config.quitControl.macLikeMode && !editorIsOpen && !multipleEditorGroups || quitControl.isActive && isMac && !editorIsOpen && !multipleEditorGroups"
-            },
-            {
-                "command": "quitControl.keybindings.closeWindowAltF4",
-                "title": "Close Window",
-                "key": "alt+f4",
-                "when": "isLinux || isWindows"
+                "when": "quitControl.isActive && isWindows && config.quitControl.enableQuitKeybindingOnWindows && config.quitControl.closeTabShouldTryToCloseEmptyWindow && !editorIsOpen && !multipleEditorGroups || quitControl.isActive && isMac && config.quitControl.closeTabShouldTryToCloseEmptyWindow && !editorIsOpen && !multipleEditorGroups || quitControl.isActive && isLinux && config.quitControl.closeTabShouldTryToCloseEmptyWindow && !editorIsOpen && !multipleEditorGroups"
             },
             {
                 "command": "quitControl.keybindings.closeWindow",
@@ -61,26 +53,44 @@
                 "mac": "cmd+shift+W"
             },
             {
-                "command": "quitControl.keybindings.closeEmptyWindow",
+                "command": "quitControl.keybindings.closeWindow",
+                "title": "Close Window",
+                "key": "alt+f4",
+                "when": "isLinux || isWindows"
+            },
+            {
+                "command": "quitControl.keybindings.closeWindow",
                 "title": "Close Editor",
                 "key": "ctrl+W",
                 "mac": "cmd+W",
-                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode || !editorIsOpen && !multipleEditorGroups && isMac"
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.closeTabShouldTryToCloseEmptyWindow"
             },
             {
-                "command": "quitControl.keybindings.closeEmptyWindowCtrlF4",
+                "command": "quitControl.keybindings.closeWindow",
                 "title": "Close Editor",
                 "key": "ctrl+f4",
-                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.macLikeMode && isWindows"
+                "when": "!editorIsOpen && !multipleEditorGroups && config.quitControl.closeTabShouldTryToCloseEmptyWindow && isWindows"
+            },
+            {
+                "command": "quitControl.keybindings.stopCloseEmptyWindow",
+                "title": "Close Editor",
+                "key": "ctrl+W",
+                "mac": "cmd+W",
+                "when": "isMac && !editorIsOpen && !multipleEditorGroups && !config.quitControl.closeTabShouldTryToCloseEmptyWindow"
             }
         ],
         "configuration": {
             "title": "QuitControl",
             "properties": {
-                "quitControl.macLikeMode": {
+                "quitControl.closeTabShouldTryToCloseEmptyWindow": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Enables macOS-like behaviors: `Ctrl+Q` to quit VSCode; `Ctrl+W` (Linux and Windows) and `Ctrl+F4` (Windows) to close empty window (aka window without open tabs);"
+                    "description": "Enables macOS-like behavior of closing an empty window with the same shortcut of closing a tab: `Cmd+W` (macOS); `Ctrl+W` (Linux and Windows); `Ctrl+F4` (Windows)."
+                },
+                "quitControl.enableQuitKeybindingOnWindows": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enables `Ctrl+Q` to quit VSCode on Windows."
                 }
             }
         }

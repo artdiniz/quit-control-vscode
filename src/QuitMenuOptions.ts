@@ -3,7 +3,7 @@ import { isMacOSPlatform, isWindowsPlatform } from './settings'
 
 type QuickPickItems = (
     'Quit' | 
-    'QuitMacMode' | 
+    'QuitWindowsMode' | 
     'CloseEmptyWindow' |
     'CloseWindow' | 
     'Cancel'
@@ -29,7 +29,7 @@ export const QuitMenuOptions: {[key in QuickPickItems]: IQuitControlQuickPickIte
                 : ''
         ,command: 'workbench.action.quit'
     }
-    ,QuitMacMode: {
+    ,QuitWindowsMode: {
         label: 'Quit'
         ,description: '^Q'
         ,command: 'workbench.action.quit'

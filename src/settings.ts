@@ -3,4 +3,4 @@ import * as os from 'os'
 
 export const isMacOSPlatform = (os.platform() === "darwin" )
 export const isWindowsPlatform = (os.platform() === "win32" )
-export const isMacOSMode = () => vscode.workspace.getConfiguration('quitControl').get('macLikeMode')
+export const isWindowsQuitMode = () => vscode.workspace.getConfiguration('quitControl').get('enableQuitKeybindingOnWindows')
